@@ -1,0 +1,12 @@
+
+
+Hệ quản trị cơ sở dữ liệu (DBMS): Là phần mềm chịu trách nhiệm lưu trữ, truy vấn, và quản lý dữ liệu.
+
+3 đặc điểm: - Miễn phí
+            - Hiệu suất cao và đáng tin cậy
+            - Khả năng tương thích cao
+
+ba trường hợp mà MySQL có thể được sử dụng: 
+    + ứng dụng di động
+    + Hệ thoogs quản lý bệnh viện
+    + Hệ thống quản lý khách sạn
