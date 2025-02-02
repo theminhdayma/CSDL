@@ -32,7 +32,7 @@ use KS23B_DataBase;
 */
 
 create table Category (
-	idCategory int key auto_increment,
+	idCategory int primary key auto_increment,
     nameCategory varchar(100) unique not null,
     descriptionCategory text,
     priorityCategory int,
@@ -40,7 +40,7 @@ create table Category (
 );
 
 create table product (
-	idProduct int key auto_increment,
+	idProduct int primary key auto_increment,
     idCategory int,
     nameProduct varchar(100) unique not null,
     descriptionProduct text,
