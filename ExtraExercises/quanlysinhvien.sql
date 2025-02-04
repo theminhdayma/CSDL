@@ -446,3 +446,71 @@ where not exists (
 );
 
 -- 57
+select sv.MaSV, sv.TenSV
+from DMSV sv
+where.MaKhoa = 'AV' AND sv.HocBong > 0;
+
+select sv.MaSV, sv.TenSV
+from DMSV sv
+where not exists (
+    select 1
+    from KetQua kq
+    where kq.MaSV = sv.MaSV and kq.Diem < 5
+);
+
+-- 58
+select MaKhoa, COUNT(*) as SoSinhVien from DMSV
+where HocBong > 0
+group by MaKhoa
+order by SoSinhVien desc
+limit 1;
+
+select MaKhoa, COUNT(*) as SoSinhVien from DMSV
+where HocBong > 0
+group by MaKhoa
+order by SoSinhVien asc
+limit 1;
+
+-- 59 
+select kq.MaSV, sv.TenSV, count(kq.MaMH) AS SoMonHoc from KetQua kq
+join DMSV sv on kq.MaSV = sv.MaSV
+group by kq.MaSV
+order by SoMonHoc desc
+limit 3;
+
+-- 60 
+select TenMH from DMMH mh
+where not exists (
+    select 1 from DMSV sv
+    where not exists (
+        select 1 from KetQua kq
+        where kq.MaSV = sv.MaSV and kq.MaMH = mh.MaMH
+    )
+);
+
+-- 61
+select distinct sv.MaSV, sv.TenSV from DMSV sv
+where exists (
+    select 1 from KetQua kq
+    where kq.MaSV = sv.MaSV and kq.MaMH in (
+        select MaMH from KetQua
+        where MaSV = 'A02'
+    )
+);
+
+-- 62
+select distinct sv.MaSV, sv.TenSV from DMSV sv
+where exists (
+    select 1 from KetQua kq
+    where kq.MaSV = sv.MaSV
+    and kq.MaMH not in (
+        select MaMH from KetQua
+        where MaSV = 'A02'
+    )
+) and not exists (
+    select 1 from KetQua kq
+    where kq.MaSV = 'A02' and kq.MaMH not in (
+        select MaMH from KetQua
+        where kq.MaSV = sv.MaSV
+    )
+);
