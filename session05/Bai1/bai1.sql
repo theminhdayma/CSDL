@@ -46,7 +46,7 @@ left join customers on customers.customer_id = orders.customer_id;
 
 -- 3
 select c.customer_id, c.name, c.phone, o.order_id, o.status from customers c
-left join orders o on c.customer_id = o.customer_id;
+right join orders o on c.customer_id = o.customer_id;
 
 -- 4
 select c.customer_id, c.name, o.order_id, o.total_amount, o.order_date from customers c
