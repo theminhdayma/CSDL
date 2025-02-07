@@ -26,13 +26,13 @@ VALUES
 
 -- 2
 select ProductName, Category, Price from Products
-where Price > (select Price from Products where ProductName like '%MacBook Air%');
+where Price > (select Price from Products where ProductName like 'MacBook Air');
 
 -- 3
 select ProductName, Category, Price from Products
-where Category like '%Electronics%' and Price < (select Price from Products where ProductName like '%Laptop%');
+where Category like 'Electronics' and Price < (select Price from Products where ProductName like 'Laptop');
 
 -- 4
 select ProductName, Price, Stock from Products
-where Stock < (select Stock from Products where ProductName like '%T-Shirt%');
+where Stock < (select Stock from Products where ProductName like 'T-Shirt');
 
