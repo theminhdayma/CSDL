@@ -37,9 +37,9 @@ ALTER TABLE Student ADD COLUMN Status VARCHAR(10);
 
 -- Thêm ràng buộc xóa dữ liệu liên quan khi sinh viên hoặc bài kiểm tra bị xóa
 ALTER TABLE StudentTest DROP FOREIGN KEY StudentTest_ibfk_1;
-ALTER TABLE StudentTest ADD CONSTRAINT StudentTest_ibfk_1 FOREIGN KEY (RN) REFERENCES Student(RN) ON DELETE CASCADE;
+ALTER TABLE StudentTest ADD CONSTRAINT StudentTest_ibfk_1 FOREIGN KEY (RN) REFERENCES Student(RN);
 ALTER TABLE StudentTest DROP FOREIGN KEY StudentTest_ibfk_2;
-ALTER TABLE StudentTest ADD CONSTRAINT StudentTest_ibfk_2 FOREIGN KEY (TestID) REFERENCES Test(TestID) ON DELETE CASCADE;
+ALTER TABLE StudentTest ADD CONSTRAINT StudentTest_ibfk_2 FOREIGN KEY (TestID) REFERENCES Test(TestID);
 
 -- Chèn dữ liệu vào bảng Student
 INSERT INTO Student (RN, Name, Age) VALUES 

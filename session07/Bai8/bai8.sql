@@ -5,20 +5,20 @@ use QLBH;
 
 CREATE TABLE Customer (
     cID INT PRIMARY KEY,
-    Name VARCHAR(25) not null,
-    cAge INT not null
+    Name VARCHAR(25) NOT NULL,
+    cAge INT NOT NULL
 );
 
 CREATE TABLE Products (
     pID INT PRIMARY KEY,
-    pName VARCHAR(25) not null,
-    pPrice int not null
+    pName VARCHAR(25) NOT NULL,
+    pPrice int NOT NULL
 );
 
 CREATE TABLE Orders (
     oID INT PRIMARY KEY,
-    cID INT not null,
-    oDate DATETIME not null,
+    cID INT NOT NULL,
+    oDate DATETIME NOT NULL,
     oTotalPrice INT,
     FOREIGN KEY (cID) REFERENCES Customer(cID)
 );
