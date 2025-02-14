@@ -44,13 +44,9 @@ create procedure increaseemployeesalary(
     inout current_salary decimal(10,2)
 )
 begin
-    -- Lấy mức lương hiện tại
     select salary into current_salary from employees where employeeid = emp_id;
-    
-    -- Tăng lương 10%
     set current_salary = current_salary * 1.1;
     
-    -- Cập nhật mức lương mới
     update employees
     set salary = current_salary
     where employeeid = emp_id;
@@ -70,3 +66,8 @@ call GetTotalBalance(1);
 set @new_salary = (select salary from employees where employeeid = 4);
 call increaseemployeesalary(4, @new_salary);
 select @new_salary;
+
+-- 6) Hãy xóa tất cả các Stored Procedure nếu tồn tại bao gồm: GetCustomerByPhone, GetTotalBalance, IncreaseEmployeeSalary.
+drop procedure if exists GetCustomerByPhone;
+drop procedure if exists GetTotalBalance;
+drop procedure if exists increaseemployeesalary;

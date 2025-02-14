@@ -80,8 +80,8 @@ delimiter //
 
 drop procedure if exists transfermoney //
 create procedure transfermoney(
-    in sender_id int,
-    in receiver_id int,
+    sender_id int,
+    receiver_id int,
     inout amount decimal(15,2)
 )
 begin
