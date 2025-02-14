@@ -149,9 +149,6 @@ SELECT * FROM employeeBranch;
 SELECT * FROM highSalaryEmployees;
 
 -- 5) Cập nhật VIEW EmployeeBranch để thêm cột PhoneNumber (số điện thoại của nhân viên).
-alter table employees 
-add column phonenumber varchar(15) after salary;
-
 drop view if exists employeebranch;
 
 create view employeebranch as
@@ -160,7 +157,7 @@ select
     e.fullname, 
     e.position, 
     e.salary, 
-    e.phonenumber,  -- thêm cột số điện thoại
+    b.phonenumber,
     b.branchname, 
     b.location
 from employees e
