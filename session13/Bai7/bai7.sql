@@ -102,6 +102,13 @@ begin
     -- thêm bản ghi vào bảng payroll để xác nhận lương đã được trả
     insert into payroll (emp_id, salary, pay_date) 
     values (p_emp_id, v_salary, curdate());
+    
+    -- Cập nhật ngày trả lương trong bảng employees
+    UPDATE employees SET last_pay_date = NOW() WHERE emp_id = p_emp_id;
+
+    -- Ghi log thành công
+    INSERT INTO transaction_log (emp_id, log_message) 
+    VALUES (p_emp_id, 'Lương đã được chuyển thành công');
 
     commit;
 end //
